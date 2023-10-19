@@ -1,0 +1,48 @@
+server:
+  port: 8080
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/db_authority_system?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai
+    username: root
+    password: 123456
+  jackson: # json日期格式化
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: Asia/Shanghai
+  mvc: # 日期格式化
+    format:
+      date: yyyy-MM-dd
+      date-time: yyyy-MM-dd HH:mm:ss
+  redis:
+    host: 43.143.237.202
+    database: 0
+    port: 6379
+    password: 123456
+    timeout: 10000
+    expire: 60000 # 自定义属性
+
+mybatis-plus:
+  mapper-locations: classpath:mapper/**/*.xml #
+  type-aliases-package: org.example.authority.entity # 设置别名
+  global-config:
+    db-config:
+      logic-delete-field: isDelete #
+      logic-delete-value: 1 #
+      logic-not-delete-value: 0 #
+  configuration: #
+    map-underscore-to-camel-case: true
+
+#jwt配置
+jwt:
+  #密钥
+  secret: org.example
+  #过期时间(30分钟)
+  expiration: 1800000
+# 登录请求地址(自定义)
+request:
+  login:
+    url: /api/user/login
+# 显示日志
+logging:
+  level:
+    org.example: debug
