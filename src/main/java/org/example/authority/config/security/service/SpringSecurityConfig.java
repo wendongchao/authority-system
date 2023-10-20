@@ -26,7 +26,7 @@ import javax.annotation.Resource;
 @Configuration
 @EnableWebSecurity
 //开启权限注解控制
-//@EnableGlobalMethodSecurity(prePostEnabled = true)
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Resource

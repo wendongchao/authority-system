@@ -55,4 +55,53 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements Ro
         return baseMapper.selectPage(page,queryWrapper);
     }
 
+    /***
+     * 检查该角色是否已被使用
+     * @param id :
+     * @return boolean
+     */
+    @Override
+    public boolean hasRoleCount(Long id) {
+        return baseMapper.getRoleCountByRoleId(id) > 0 ;
+    }
+
+    /***
+     * 删除角色
+     * @param id :
+     * @return boolean
+     */
+    @Override
+    public boolean deleteRoleById(Long id) {
+        // 删除角色权限关系
+        baseMapper.deleteRolePermissionByRoleId(id);
+        // 删除角色
+        return baseMapper.deleteById(id) > 0 ;
+    }
+
+    /**
+     * 保存角色权限关系
+     *
+     * @param roleId
+     * @param permissionIds
+     * @return
+     */
+    @Override
+    public boolean saveRolePermission(Long roleId, List<Long> permissionIds) {
+        //删除该角色对应的权限信息
+        baseMapper.deleteRolePermissionByRoleId(roleId);
+        //保存角色权限
+        return baseMapper.saveRolePermission(roleId,permissionIds)>0;
+    }
+
+    /**
+     * 根据用户ID查询该用户拥有的角色ID
+     *
+     * @param userId
+     * @return
+     */
+    @Override
+    public List<Long> findRoleIdByUserId(Long userId) {
+        return baseMapper.findRoleIdByUserId(userId);
+    }
+
 }

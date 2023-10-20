@@ -1,11 +1,11 @@
 server:
-  port: 8080
+  port: 8099
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/db_authority_system?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai
     username: root
-    password: 123456
+    password: root2014
   jackson: # json日期格式化
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: Asia/Shanghai
@@ -46,3 +46,11 @@ request:
 logging:
   level:
     org.example: debug
+#阿里云OSS配置
+aliyun:
+  oss:
+    file:
+      endpoint: oss-cn-shenzhen.aliyuncs.com
+      keyid: LTAI4GFeNyeF4GSEoWsnGPvY
+      keysecret: tXxAhoddB41nJiVOWHsz9rvqtsisHs
+      bucketname: yygh-bingo
