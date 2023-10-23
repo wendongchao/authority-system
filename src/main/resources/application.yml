@@ -1,11 +1,11 @@
 server:
-  port: 8099
+  port: 8080
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/db_authority_system?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://43.143.237.202:3306/db_authority_system?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai
     username: root
-    password: root2014
+    password: 123456
   jackson: # json日期格式化
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: Asia/Shanghai
@@ -14,7 +14,7 @@ spring:
       date: yyyy-MM-dd
       date-time: yyyy-MM-dd HH:mm:ss
   redis:
-    host: 43.143.237.202
+    host: 127.0.0.1
     database: 0
     port: 6379
     password: 123456
